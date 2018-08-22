@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(cors({
-  origin: '*',
+  origin: 'https://verify-a-true-or-bluff-clich.herokuapp.com/',
   credentials: true
 }));
 
