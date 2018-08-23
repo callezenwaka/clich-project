@@ -25,7 +25,6 @@ router.get('/', (req, res) => {
       console.log(err);
     }
     else {
-      console.log('cliches: '${cliches.length});
       res.json(cliches);
     }
   });

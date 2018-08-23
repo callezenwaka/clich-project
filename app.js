@@ -21,16 +21,19 @@ app.use(express.static('public'));
 app.use(bodyParser.json());
 app.use(cors({
   origin: '*',
-  credentials: true
+  credentials: false
 }));
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
+  res.header("Access-Control-Allow-Methods", 'PUT', 'POST', 'PATCH', 'DELETE', 'OPTIONS');
+  next();
+});
 
 app.use('/cliches', clichRoutes);
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
